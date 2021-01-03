@@ -17,8 +17,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
 const tags = ["fun", "programming", "health", "science"];
 
 const postSchema = yup.object().shape({
@@ -30,12 +28,9 @@ const postSchema = yup.object().shape({
 });
 
 
-
 const AddPostForm = ({ open, handleClose }) => {
+
     const [file, setFile] = useState(null);
-
-
-
     const { register, handleSubmit, control, errors, reset } = useForm({
         resolver: yupResolver(postSchema)
     });
@@ -44,11 +39,12 @@ const AddPostForm = ({ open, handleClose }) => {
         console.log({...data,file});
         //dispatch(createPost());
         clearForm();
+        
 
     }
     const clearForm = () => {
         reset();
-        
+        handleClose();
     }
 
     const classes = useStyles();
@@ -58,7 +54,7 @@ const AddPostForm = ({ open, handleClose }) => {
             <DialogContent>
                 <DialogContentText>Yeni bir yazı eklemek için aşağıdaki formu doldurunuz.</DialogContentText>
                 <div className={classes.root}>
-                    <form noValidate autocomplete="off" onSubmit={handleSubmit()}>
+                    <form noValidate autoComplete="off" onSubmit={handleSubmit()}>
                         <TextField
                             id="title"
                             label="Başlık"
