@@ -8,7 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { createPost } from "../actions/post";
 
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
@@ -28,11 +27,10 @@ const postSchema = yup.object().shape({
 
 });
 
-
 const AddPostForm = ({ open, handleClose }) => {
 
     const [file, setFile] = useState(null);
-    
+
     const dispatch=useDispatch();
 
     const { register, handleSubmit, control, errors, reset } = useForm({
@@ -130,4 +128,5 @@ const AddPostForm = ({ open, handleClose }) => {
         </Dialog>
     )
 }
+
 export default AddPostForm;
