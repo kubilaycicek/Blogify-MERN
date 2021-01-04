@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
+import { createPost } from "../actions/post";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,17 +32,19 @@ const postSchema = yup.object().shape({
 const AddPostForm = ({ open, handleClose }) => {
 
     const [file, setFile] = useState(null);
+    
+    const dispatch=useDispatch();
+
     const { register, handleSubmit, control, errors, reset } = useForm({
         resolver: yupResolver(postSchema)
     });
 
     const onSubmit = (data) => {
-        console.log({...data,file});
-        //dispatch(createPost());
+        console.log({ ...data, file });
+        dispatch(createPost({ ...data, image: file }));
         clearForm();
-        
-
     }
+
     const clearForm = () => {
         reset();
         handleClose();
