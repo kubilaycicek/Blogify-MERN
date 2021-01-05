@@ -3,7 +3,6 @@ import { CssBaseline, Container, Grid, AppBar, Toolbar, Typography, Button, Icon
 import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PenIcon from "@material-ui/icons/Create";
-
 import { useDispatch } from "react-redux";
 import { fetchPosts } from "./actions/post";
 
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme => ({
   }
 })));
 
-
 const App = () => {
 
   const [open, setOpen] = useState(false);
@@ -39,12 +37,13 @@ const App = () => {
   const handleOpen = () => {
     setOpen(true);
   }
+
   const handleClose = () => {
     setOpen(false);
   }
 
-
   const classes = useStyles();
+  
   return (
     <>
       <CssBaseline />
@@ -58,7 +57,6 @@ const App = () => {
             <Button color="primary" variant="outlined" startIcon={<PenIcon />} onClick={handleOpen}> Yeni Yazı</Button>
           </Toolbar>
         </AppBar>
-
         <Grid container className={classes.container}>
           <Grid item xs={12}>
             <Router>
@@ -70,9 +68,9 @@ const App = () => {
           </Grid>
         </Grid>
       </Container>
-
       <AddPostForm open={open} handleClose={handleClose} />
     </>
   )
 }
+
 export default App;
