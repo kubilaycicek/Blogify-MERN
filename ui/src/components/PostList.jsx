@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
 
 const PostList = () => {
     const classes = useStyles();
-    const posts = useSelector((state) => state.posts.posts);
+    const posts = useSelector((state) => state.posts);
+    console.log(posts);
 
     return (
         <>

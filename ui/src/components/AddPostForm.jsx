@@ -31,7 +31,7 @@ const AddPostForm = ({ open, handleClose }) => {
 
     const [file, setFile] = useState(null);
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
     const { register, handleSubmit, control, errors, reset } = useForm({
         resolver: yupResolver(postSchema)

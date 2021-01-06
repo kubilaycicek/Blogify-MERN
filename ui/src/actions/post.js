@@ -1,13 +1,13 @@
 import * as api from "../api/index";
 import * as types from "./types";
 
-export const fetchPosts = ()=>async (dispatch) => {
+export const fetchPosts = () => async (dispatch) => {
     try {
         const { data } = await api.fetchPosts();
         dispatch({
             type: types.FETCH_POSTS,
-            playload: data,
-        })
+            payload: data,
+        });
 
     } catch (error) {
         console.log(error);
