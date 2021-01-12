@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { fetchPosts } from "./actions/post";
 
 import PostsList from "./components/PostList";
+import PostDetails from "./components/PostDetails";
 import AddPostForm from "./components/AddPostForm";
 
 
@@ -62,6 +63,7 @@ const App = () => {
             <Router>
               <Switch>
                 <Route exact path={"/posts"} component={PostsList}></Route>
+                <Route exact path={"/posts/:id"} component={PostDetails}></Route>
               </Switch>
               <Redirect from="/" to="/posts" />
             </Router>
