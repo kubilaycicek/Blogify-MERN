@@ -43,6 +43,7 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
     return moment(date).fromNow();
   };
 
+
   return (
     <Card className={classes.root}>
       <CardMedia
