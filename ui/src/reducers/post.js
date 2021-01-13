@@ -2,7 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
     posts: [],
-    currentPost:null
+    currentPost: null
 }
 
 const postReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const postReducer = (state = initialState, action) => {
                 posts: action.payload,
             };
         case types.FETCH_SINGLE_POST:
-            return{
+            return {
                 ...state,
                 currentPost: action.payload
             }
@@ -21,6 +21,12 @@ const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [...state.posts, action.payload],
+            }
+        case types.DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== action.payload),
+                currentPost:null
             }
         default:
             return {

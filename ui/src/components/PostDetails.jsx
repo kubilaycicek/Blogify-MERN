@@ -1,4 +1,3 @@
-  
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Paper, Divider, Button, Chip } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-
 import { fetchSinglePost, deletePost } from "../actions/post";
 import noImage from "../images/noimage.svg";
 
@@ -39,7 +37,6 @@ const PostDetails = ({ history, location, match }) => {
 
   const currentPost = useSelector((state) => state.posts.currentPost);
 
-  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     dispatch(fetchSinglePost(id));
@@ -54,20 +51,10 @@ const PostDetails = ({ history, location, match }) => {
     history.push("/posts");
   };
 
-  const openEditMode = () => {
-    setEditMode(true);
-  };
-
-  const closeEditMode = () => {
-    setEditMode(false);
-  };
 
   const classes = useStyles();
   return (
     <Paper className={classes.paper} elevation={0}>
-      {editMode ? (
-        <EditPostForm post={currentPost} closeEditMode={closeEditMode} />
-      ) : (
         <div>
           <div className={classes.header}>
             <Typography variant="h5" gutterBottom>
@@ -78,34 +65,31 @@ const PostDetails = ({ history, location, match }) => {
                 color="primary"
                 variant="outlined"
                 startIcon={<EditIcon />}
-                onClick={openEditMode}
               >
                 Düzenle
               </Button>{" "}
               <Button
                 color="secondary"
                 variant="outlined"
-                onClick={removePost}
                 startIcon={<DeleteIcon />}
-              >
+                onClick={removePost}
+                >
                 Sil
               </Button>
             </div>
           </div>
-
           <Divider />
           <Typography variant="overline" gutterBottom>
             {currentPost?.subtitle}
           </Typography>
           <Typography variant="caption" component="p" gutterBottom>
-            {convertRelativeTime(currentPost?.createdAt)} by Didem
+            {convertRelativeTime(currentPost?.createdAt)} by Kubilay
           </Typography>
           <Chip
             label={`# ${currentPost?.tag}`}
             variant="outlined"
             className={classes.chip}
           />
-
           <div className={classes.content}>
             <img
               src={currentPost?.image || noImage}
@@ -117,7 +101,7 @@ const PostDetails = ({ history, location, match }) => {
             </Typography>
           </div>
         </div>
-      )}
+      
     </Paper>
   );
 };
