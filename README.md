@@ -3,7 +3,7 @@ This is a MERN Stack Application
 
 ## Using Tools & Technologies 
 * NodeJS
-* ExpresJSS
+* ExpresJS
 * MongoDb
 * React
 * React Redux
