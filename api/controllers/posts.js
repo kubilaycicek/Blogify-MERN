@@ -53,6 +53,7 @@ export const deletePost = async (req, res) => {
   const { id: _id } = req.params;
   try {
     const deletedPost = await Post.findByIdAndRemove(_id);
+    console.log("Silindi");
     res.json(deletedPost);
   } catch (error) {
     res.status(409).json({
